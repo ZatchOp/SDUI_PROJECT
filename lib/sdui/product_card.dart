@@ -8,9 +8,18 @@ class SDUIProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double radius = 12.0;
+
+    const snackBar = SnackBar(
+      content: Text('Does Not Defined any Action for this Product'),
+    );
+
     return InkWell(
       borderRadius: BorderRadius.circular(radius),
-      onTap: data.containsKey("action") ? onTap : () {},
+      onTap: data.containsKey("action")
+          ? onTap
+          : () {
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
       child: Container(
         width: 160,
         margin: EdgeInsets.all(5.0),
